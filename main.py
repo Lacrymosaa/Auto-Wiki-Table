@@ -1,6 +1,6 @@
 import os
 
-def generate_items_wikitable(image_folder, output_file):
+def generate_wikitable(image_folder, output_file):
     if not os.path.exists(image_folder):
         raise Exception(f"The folder {image_folder} does not exist.")
     
@@ -9,7 +9,7 @@ def generate_items_wikitable(image_folder, output_file):
     if not image_files:
         raise Exception(f"No image files found in {image_folder}.")
     
-    wikicode = '{| class="wikitable sortable"\n! Nome !! Uso !! Localização\n'
+    wikicode = '{| class="wikitable sortable"\n! Titles !! For The !! Columns\n'
     
     for image_file in image_files:
         item_name = os.path.splitext(image_file)[0]
@@ -22,10 +22,10 @@ def generate_items_wikitable(image_folder, output_file):
     
     print(f"Wikitable successfully saved to {output_file}.")
 
-image_folder_path = "./Items"
-output_file_path = "items_wikitable.txt"
+image_folder_path = "./Folder"
+output_file_path = "wikitable.txt"
 
 try:
-    generate_items_wikitable(image_folder_path, output_file_path)
+    generate_wikitable(image_folder_path, output_file_path)
 except Exception as e:
     print(f"An error occurred: {e}")
